@@ -11,6 +11,7 @@ export const CountLetters = () => {
       style={{
         display: "flex",
         justifyContent: "center",
+        flexDirection: "column",
         width: "100vw",
         background: "black",
         height: "100vh",
@@ -22,30 +23,25 @@ export const CountLetters = () => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
+
+      {Object.entries(counter).map(([key, value]) => {
+        return (
+          <div key={key}>
+            <p style={{ color: "white" }}>Letter: {key}</p>
+            <p style={{ color: "white" }}>{value}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };
 
 const countCharacters = (string: string): Record<string, number> => {
-  const sanitizedString = string.trim().split(" ").join("").split("");
-  const result = sanitizedString.reduce((counterObject, currentLetter) => {
-    const hasLetter = !!counterObject[currentLetter];
-    // if (hasLetter) {
-    //   return {
-    //     ...counterObject,
-    //     [currentLetter]: counterObject[currentLetter] + 1,
-    //   };
-    // }
-    // return {
-    //   ...counterObject,
-    //   [currentLetter]: 1,
-    // };
-    if (hasLetter) {
-      counterObject[currentLetter] = counterObject[currentLetter] + 1;
-      return counterObject;
-    }
-    counterObject[currentLetter] = 1;
+  const stringArray = string.trim().split(" ").join("").split("");
+  return stringArray.reduce((counterObject, currentItem) => {
+    counterObject[currentItem] = !!counterObject[currentItem]
+      ? counterObject[currentItem] + 1
+      : 1;
     return counterObject;
   }, {} as Record<string, number>);
-  return result;
 };
