@@ -1,16 +1,25 @@
-import React from "react";
-import { TodoListApp } from "./components/TodoListApp";
+import { TodoListAdmin } from "./components/organisms/TodoListAdmin";
+import { TodoListVisitor } from "./components/organisms/TodoListVisitor";
+import { TodoListContainer } from "./components/templates/TodoListContainer";
 import { useTodos } from "./hook/useTodos";
 
 const SRP = () => {
   const { presenters, controllers } = useTodos();
   return (
-    <TodoListApp
+    <TodoListContainer
       newTodo={presenters.newTodo}
-      todos={presenters.todos}
       addTodo={controllers.handleAddTodo}
-      removeTodo={controllers.handleRemoveTodo}
       updateCurrentTodo={controllers.handleUpdateNewTodo}
+      todoList={
+        presenters.role === "admin" ? (
+          <TodoListAdmin
+            removeTodo={controllers.handleRemoveTodo}
+            todos={presenters.todos}
+          />
+        ) : (
+          <TodoListVisitor todos={presenters.todos} />
+        )
+      }
     />
   );
 };

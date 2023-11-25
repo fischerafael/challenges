@@ -31,6 +31,7 @@ export const useTodos = () => {
     presenters: {
       newTodo,
       todos,
+      role: "admin" as Role,
     },
     controllers: {
       handleUpdateNewTodo,

@@ -1,3 +1,3 @@
-export const removeTodo = (todos: string[], todoId: number): string[] => {
-  return todos.filter((_, todoIndex) => todoIndex !== todoId);
+export const removeTodo = (todos: string[], index: number): string[] => {
+  return todos.filter((_, currentTodoIndex) => currentTodoIndex !== index);
 };

@@ -1,18 +1,15 @@
-import React from "react";
-import { TodoList } from "./TodoList";
+import React, { ReactNode } from "react";
 
-export const TodoListApp = ({
+export const TodoListContainer = ({
+  todoList,
   newTodo,
-  todos,
   updateCurrentTodo,
   addTodo,
-  removeTodo,
 }: {
+  todoList: ReactNode;
   newTodo: string;
-  todos: string[];
   updateCurrentTodo: (todo: string) => void;
   addTodo: () => void;
-  removeTodo: (index: number) => void;
 }) => {
   return (
     <div>
@@ -25,7 +22,7 @@ export const TodoListApp = ({
         />
         <button onClick={addTodo}>Add</button>
       </div>
-      <TodoList removeTodo={removeTodo} todos={todos} />
+      {todoList}
     </div>
   );
 };
