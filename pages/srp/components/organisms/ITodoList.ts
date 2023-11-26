@@ -1,5 +1,7 @@
-interface ITodoList {
-  todos: string[];
+import { Todo } from "../../domain/entity/Todo";
+
+export interface ITodoList {
+  todos: Todo[];
 }
 
-type Role = "admin" | "visitor";
+export type Role = "admin" | "visitor";

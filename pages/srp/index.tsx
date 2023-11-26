@@ -5,6 +5,7 @@ import { useTodos } from "./hook/useTodos";
 
 const SRP = () => {
   const { presenters, controllers } = useTodos();
+
   return (
     <TodoListContainer
       newTodo={presenters.newTodo}

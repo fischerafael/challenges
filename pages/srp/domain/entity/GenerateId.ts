@@ -1,0 +1,3 @@
+interface GenerateId {
+  execute(): string;
+}

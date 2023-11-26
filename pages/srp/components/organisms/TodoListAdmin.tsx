@@ -1,17 +1,18 @@
 import { TodoItemAdmin } from "../molecules/TodoItemAdmin";
+import { ITodoList } from "./ITodoList";
 
 interface Props extends ITodoList {
-  removeTodo: (index: number) => void;
+  removeTodo: (todo: string) => void;
 }
 
 export const TodoListAdmin = ({ todos, removeTodo }: Props) => {
   return (
     <ul>
-      {todos.map((todo, index) => (
+      {todos.map((todo) => (
         <TodoItemAdmin
-          key={index}
-          removeTodo={() => removeTodo(index)}
-          todo={todo}
+          key={todo.id}
+          removeTodo={() => removeTodo(todo.id)}
+          todo={todo.value}
         />
       ))}
     </ul>

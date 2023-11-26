@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { removeTodo } from "../domain/removeTodo";
-import { addTodo } from "../domain/addTodo";
+import { removeTodo } from "../domain/use-cases/removeTodo";
+import { addTodo } from "../domain/use-cases/addTodo";
+import { Todo } from "../domain/entity/Todo";
+import { Role } from "../components/organisms/ITodoList";
 
 export const useTodos = () => {
-  const [todos, setTodos] = useState<string[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>("");
 
   const handleUpdateNewTodo = (value: string) => {
@@ -19,9 +21,9 @@ export const useTodos = () => {
     }
   };
 
-  const handleRemoveTodo = (index: number) => {
+  const handleRemoveTodo = (todo: string) => {
     try {
-      setTodos(removeTodo(todos, index));
+      setTodos(removeTodo(todos, todo));
     } catch (e: any) {
       alert(e.message);
     }
