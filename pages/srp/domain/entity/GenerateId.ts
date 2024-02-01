@@ -1,3 +1,0 @@
-interface GenerateId {
-  execute(): string;
-}
